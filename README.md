@@ -34,6 +34,11 @@ Reboot. You should see a "Fedora Linux snapshots" submenu in GRUB.
 - Config defaults patched for Fedora paths during build (`/boot/grub2`,
   `/usr/sbin/grub2-mkconfig`, etc.)
   - Read [this](https://github.com/Antynea/grub-btrfs/issues/419#issuecomment-4165437249) for more info how I found out about it
+  - I found grub2-mkconfig in both of these locations
+    ```
+    which grub2-mkconfig
+    ls -la /usr/bin/grub2-mkconfig /usr/sbin/grub2-mkconfig
+    ```
 - Makefile's "must be root" check removed (rpmbuild correctly runs non-root)
 - Arch Linux initramfs hooks excluded (Fedora doesn't use mkinitcpio)
 
