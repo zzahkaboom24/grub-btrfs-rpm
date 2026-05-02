@@ -38,6 +38,8 @@ Reboot. You should see a "Fedora Linux snapshots" submenu in GRUB.
     ```
     which grub2-mkconfig
     ls -la /usr/bin/grub2-mkconfig /usr/sbin/grub2-mkconfig
+    -rwxr-xr-x. 1 root root 9208 Apr  8 02:00 /usr/bin/grub2-mkconfig
+    -rwxr-xr-x. 1 root root 9208 Apr  8 02:00 /usr/sbin/grub2-mkconfig
     ```
 - Makefile's "must be root" check removed (rpmbuild correctly runs non-root)
 - Arch Linux initramfs hooks excluded (Fedora doesn't use mkinitcpio)
