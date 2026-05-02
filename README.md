@@ -58,3 +58,5 @@ rpmbuild -ba grub-btrfs.spec
 The packaging files in this repo are licensed under GPL-3.0-or-later, matching
 the upstream grub-btrfs project. Upstream grub-btrfs is Copyright (C) Antynea,
 also GPL-3.0-or-later.
+
+
