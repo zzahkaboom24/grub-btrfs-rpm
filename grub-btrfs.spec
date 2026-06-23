@@ -28,7 +28,24 @@ snapper, and timeshift.
 %prep
 %autosetup
 
-# Apply Fedora-specific config tweaks
+for option in \
+    '^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=' \
+    '^#GRUB_BTRFS_GRUB_DIRNAME=' \
+    '^#GRUB_BTRFS_MKCONFIG=' \
+    '^#GRUB_BTRFS_SCRIPT_CHECK='; do
+    if ! grep -q "$option" config; then
+        echo "ERROR: expected config option not found: $option" >&2
+        echo "Upstream config layout changed; review %%prep before bumping." >&2
+        exit 1
+    fi
+done
+
+if ! grep -q 'id -u' Makefile; then
+    echo "ERROR: expected root-check pattern not found in Makefile" >&2
+    echo "Upstream Makefile changed; review the install-target patch." >&2
+    exit 1
+fi
+
 sed -i \
   -e '/^#GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS=/a GRUB_BTRFS_SNAPSHOT_KERNEL_PARAMETERS="rd.live.overlay.overlayfs=1"' \
   -e '/^#GRUB_BTRFS_GRUB_DIRNAME=/a GRUB_BTRFS_GRUB_DIRNAME="/boot/grub2"' \
