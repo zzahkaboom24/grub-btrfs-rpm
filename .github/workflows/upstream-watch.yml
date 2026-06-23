@@ -17,8 +17,10 @@ jobs:
 
       - name: Get latest upstream version
         id: upstream
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          LATEST=$(curl -sf https://api.github.com/repos/Antynea/grub-btrfs/releases/latest | jq -r .tag_name | sed 's/^v//')
+          LATEST=$(gh api repos/Antynea/grub-btrfs/releases/latest --jq '.tag_name' | sed 's/^v//')
           if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
             echo "Failed to fetch upstream version"
             exit 1
