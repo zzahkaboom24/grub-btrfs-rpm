@@ -84,7 +84,7 @@ make install DESTDIR=%{buildroot} PREFIX=/usr SYSTEMD=true INITCPIO=false GRUB_U
 %{_mandir}/man8/grub-btrfsd.8*
 
 %changelog
-* Sat May 02 2026 zzahkaboom24 fedora@zzahkaboom24.de - 4.14-1
+* Sat May 02 2026 zzahkaboom24 <fedora@zzahkaboom24.de> - 4.14-1
 - Update to upstream 4.14
 - Initial package for Fedora 44+
 - Apply Fedora-specific config defaults during build
